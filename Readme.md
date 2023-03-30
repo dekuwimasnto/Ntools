@@ -16,6 +16,10 @@ If anybody of you had a some idea for update what next, feel free to text me on 
 
 -regards Ntoo
 
+## Credit
+https://github.com/amd64fox/SpotX
+https://github.com/massgravel/Microsoft-Activation-Scripts
+
 ## Preview
 [![reg.png](https://i.postimg.cc/HcHwZn55/reg.png)](https://postimg.cc/HcHwZn55)
 [![log.png](https://i.postimg.cc/CBNjW0H2/log.png)](https://postimg.cc/CBNjW0H2)
