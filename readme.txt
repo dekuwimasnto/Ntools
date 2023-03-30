@@ -1,5 +1,7 @@
 This tool is for studying and still developing maintaining...
 
+Download zip and extract in your Downloads
+
 For
 action 1 is just refreshing by run tree.com.
 action 2 for restore health to get by from microsoft recovering.
