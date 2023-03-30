@@ -1,6 +1,6 @@
 This tool is for studying and still developing maintaining...
 
-Download zip and extract in your Downloads
+Download zip, extract in your Downloads and rename folder as Ntools
 
 For
 action 1 is just refreshing by run tree.com.
