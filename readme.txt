@@ -12,3 +12,12 @@ action 5 for extra menu, just explore it
 If anybody of you had a some idea for update what next, feel free to text me on whatsapp +62 813 8996 2997 or mail me at riantodwi2002@gmail.com
 
 -regards Ntoo
+
+##Preview
+[url=https://postimg.cc/HcHwZn55][img]https://i.postimg.cc/HcHwZn55/reg.png[/img][/url]
+
+[url=https://postimg.cc/CBNjW0H2][img]https://i.postimg.cc/CBNjW0H2/log.png[/img][/url]
+
+[url=https://postimg.cc/QBcgJ1Bh][img]https://i.postimg.cc/QBcgJ1Bh/kelas.png[/img][/url]
+
+[url=https://postimg.cc/mPvN98gm][img]https://i.postimg.cc/mPvN98gm/biasa.png[/img][/url]
