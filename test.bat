@@ -26,14 +26,19 @@
 ::ZQ0/vhVqMQ3MEVWAtB9wSA==
 ::Zg8zqx1/OA3MEVWAtB9wSA==
 ::dhA7pRFwIByZRRnk
-::Zh4grVQjdCyDJGyX8VAjFDVAQxeDMWqGIrof/eX+4f6Unn4eRusvbIbV3YigNO8c5lbycIR5mCwUndMJbA==
+::Zh4grVQjdCyDJGyX8VAjFDVAQxeDMWqGIrof/eX+4f6Unn4eRusvbIbV3YigNO8c5lbycIR5mC8UyYUJFB44
 ::YB416Ek+ZW8=
 ::
 ::
 ::978f952a14a936cc963da21a135fa983
 @echo off
+setlocal
+
 title Ntools ver 4.5
 color b
+set delay=100
+echo. 
+
 :Reg
 setlocal EnableDelayedExpansion
 echo ====== REGISTER ======
@@ -70,6 +75,7 @@ goto Auth
 title Ntools ver 4.5
 cls
 color a
+setlocal EnableDelayedExpansion
 echo.
 echo: ==========MAIN-MENU==========
 echo: ==                         ==
@@ -93,6 +99,7 @@ if errorlevel 1 goto Refresh
 title Ntools ver 4.5
 cls
 color e
+setlocal EnableDelayedExpansion
 echo       0 
 echo       0   eeee   k  k   u    u  w       w  ii  mmmmmmmmm   aaaaa   sssss  nnnnnn     t    ooooo
 echo   00000  e    e  k k    u    u  w       w  ii  m   m   m       a  s       n    n     t    o   o
@@ -106,12 +113,14 @@ echo: == 1. Windows Office       ==
 echo: == 2. Spotify              ==
 echo: == 3. Network Information  ==
 echo: == 4. Speedtest            ==
-echo: == 5. Back to menu         ==
+echo: == 5. WARP                 ==
+echo: == 6. Back to menu         ==
 echo: ==                         ==
 echo: =============================
 echo.
-choice /c 12345 /m "Enter Option: "
-if errorlevel 5 goto Menu
+choice /c 123456 /m "Enter Option: "
+if errorlevel 6 goto Menu
+if errorlevel 5 goto Warp
 if errorlevel 4 goto Speedtest
 if errorlevel 3 goto Network
 if errorlevel 2 goto Spotify
@@ -136,6 +145,9 @@ sfc /scannow
 goto Menu
 cls
 :Clean
+@echo off
+setlocal enableDelayedExpansion
+
 del /s /f /q c:\windows\temp\*.*
 del /s /f /q C:\WINDOWS\Prefetch
 del /s /f /q %temp%\*.*
@@ -9253,16 +9265,27 @@ echo Patch successfully removed
 pause
 goto Extra
 :Disable
-echo For best experience, make sure you have to extract files at Downloads, or if you have extract at somewhere just copying folder Ntools to Downloads
+echo For best experience, make sure you have to extract files at Desktop, or if you have extract at somewhere just copying folder Ntools to Desktop
 echo.
 echo If you done.. let's fucking go!
 cd "C:\Users\%username%\Downloads\Ntools\scripts"
 start Hotspot.reg
 pause
 goto Extra
+:Warp
+@echo off
+setlocal
+echo For best experience, make sure you have to installed python 3.11 and extract download files at Desktop, or if you have extract at somewhere just copying folder Ntools to Desktop
+echo.
+echo If you done.. let's fucking go!
+pause
+"C:\Users\%username%\AppData\Local\Programs\Python\Python311\python.exe" "C:\Users\%username%\Desktop\Ntools\scripts\warp\main.py"
+"C:\Users\%username%\AppData\Local\Programs\Python\Python39\python.exe" "C:\Users\%username%\Desktop\Ntools\scripts\warp\main.py"
+pause
+goto Extra
 :Speedtest
 echo.
-echo For best experience, make sure you have to extract files at Downloads, or if you have extract at somewhere just copying folder Ntools to Downloads
+echo For best experience, make sure you have to extract files at Desktop, or if you have extract at somewhere just copying folder Ntools to Desktop
 echo.
 echo If you done.. let's fucking go!
 echo 1. Run
@@ -9272,7 +9295,7 @@ if errorlevel 2 goto Extra
 if errorlevel 1 goto Run
 echo.
 :Run
-cd "C:\Users\%username%\Downloads\Ntools\scripts"
+cd "C:\Users\%username%\Desktop\Ntools\scripts"
 start speedtest.exe
 pause
 goto Extra
@@ -9284,13 +9307,28 @@ echo.
 echo 1. Check Network
 echo 2. Change IP Address
 echo 3. Unchange IP Address
-echo 4. Back to menu
+echo 4. Network Reset
+echo 5. Back to menu
 echo.
-choice /c 1234 /m "Enter option: "
-if errorlevel 4 goto Extra
+choice /c 12345 /m "Enter option: "
+if errorlevel 5 goto Extra
+if errorlevel 4 goto Rest
 if errorlevel 3 goto Unch
 if errorlevel 2 goto Change
 if errorlevel 1 goto IPA
+:Rest
+@echo off
+setlocal
+
+echo Resetting network adapters. Please wait...
+netsh winsock reset catalog
+netsh int ipv4 reset reset.log
+netsh int ipv6 reset reset.log
+netsh int reset all
+ipconfig /flushdns
+echo Network reset complete. Please restart your computer.
+pause
+goto Extra
 :Unch
 netsh interface ip set address name="Wi-Fi" source=dhcp
 netsh interface ip set dnsservers "Wi-Fi" source=dhcp
@@ -9359,3 +9397,24 @@ goto top
 echo Adios
 goto End
 cls
+
+for /f "delims=" %%i in ('%command%') do (
+    set "line=%%i"
+    call :animate
+)
+:animate
+for /l %%j in (0,1,%^=strlen%) do (
+    set /p =%line:~%%j,1%<nul
+    ping -n 1 127.0.0.1 >nul
+)
+echo.
+goto :eof
+:strlen
+setlocal enableDelayedExpansion
+set "s=%line%"
+set "len=0"
+if defined s (set "len=1")
+for /l %%j in (0,1,8191) do (
+    if "!s:~%%j,1!" neq "" set "len=%%j"
+)
+endlocal & set "%~1=%len%"
