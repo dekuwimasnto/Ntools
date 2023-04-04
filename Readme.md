@@ -1,6 +1,11 @@
 ## Progress
 This tool is for studying and still developing maintaining...
 
+## Requirements
+Python 3.11 ver
+Windows 8 or higher
+64bit arch
+
 ## Instalation
 Download zip, extract in your Downloads and rename folder as Ntools
 
